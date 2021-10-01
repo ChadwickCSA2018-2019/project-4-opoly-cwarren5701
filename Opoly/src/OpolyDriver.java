@@ -7,7 +7,7 @@ public class OpolyDriver {
 		Scanner scanner = new Scanner(System.in);
 		int boardSize = scanner.nextInt();
 		System.out.println("Board Size: " + boardSize);
-		int seed = 123456;
+		int seed = 123546;
 		Opoly game = new Opoly(boardSize, seed);
 		game.playGame();
 	}
