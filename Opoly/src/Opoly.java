@@ -48,7 +48,7 @@ public class Opoly {
 				reward = reward * 2;
 			}
 		}
-		if (position > boardSize) {
+		if (position >= boardSize) {
 			reward = reward + 100;
 			position = position % boardSize;
 		}
@@ -80,7 +80,7 @@ public class Opoly {
 	}
 
 	public void drawBoard() {
-		for (int i = 0; i <= boardSize; i++) {
+		for (int i = 0; i <= boardSize - 1; i++) {
 			if (i != position) {
 				System.out.print("*");
 			} else {
@@ -96,7 +96,7 @@ public class Opoly {
 		Scanner scanner = new Scanner(System.in);
 		int boardSize = scanner.nextInt();
 		System.out.println("Board Size: " + boardSize);
-		int seed = 123546;
+		int seed = 1;
 		Opoly game = new Opoly(boardSize, seed);
 		game.playGame();
 	}
