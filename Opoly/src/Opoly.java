@@ -7,18 +7,19 @@ import java.util.Scanner;
  */
 public class Opoly {
 
-	private int boardSize;
-	private int seed;
-	private Random rand;
+	private int boardSize; // size of the board
+	private Random rand; // random number generator used to simulate a spin
 	private int roundsTotal; // number of rounds to play
 	private int roundsPlayed; // number of rounds that have completed
-	private int position = 0;
-	private int reward = 100;
-	private int moveCounter = 0;
-	private int nextNum;
+	private int position = 0; // position on the board
+	private int reward = 100; // current reward
+	private int moveCounter = 0; // counts the moves made throughout the game
+	private int nextNum; // describes the output of the simulated spin
 
 	/**
-	 * @param initBoardSize
+	 * Constructed an Opoly game with the size of the board.
+	 * 
+	 * @param initBoardSize the size of the board.
 	 */
 	public Opoly(int initBoardSize) {
 		boardSize = initBoardSize;
@@ -26,18 +27,21 @@ public class Opoly {
 	}
 
 	/**
-	 * @param initBoardSize
-	 * @param initSeed
+	 * Constructs an Opoly game with the size of the board and a seed value.
+	 * 
+	 * @param initBoardSize the size of the board.
+	 * @param initSeed      the seed for generating random numbers.
 	 */
 	public Opoly(int initBoardSize, int initSeed) {
 		boardSize = initBoardSize;
-		seed = initSeed;
+		int seed = initSeed;
 		rand = new Random(seed);
 
 	}
 
 	/**
-	 * @return
+	 * Generates a number between 1 and 5.
+	 * @return a number between 1 and 5. The returned value is based on a random selection.
 	 */
 	public int spin() {
 
@@ -47,7 +51,9 @@ public class Opoly {
 	}
 
 	/**
-	 * @param spinResult
+	 * Moves the player along the board according to the game's rules. 
+	 * 
+	 * @param spinResult result of the spin.
 	 */
 	public void move(int spinResult) {
 		if (moveCounter % 10 == 0) {
@@ -72,7 +78,7 @@ public class Opoly {
 	}
 
 	/**
-	 * 
+	 * Completes a spin and moves the player along the board. 
 	 */
 	public void spinAndMove() {
 		int move = spin();
@@ -80,23 +86,26 @@ public class Opoly {
 	}
 
 	/**
-	 * @return
+	 * Returns <code>true</code> if reward is equal or greater than 1000.
+	 * 
+	 * @return <code>true</code> if reward is equal or greater than 1000;
+	 *         <code>false</code> otherwise
 	 */
 	private boolean gameOver() {
 		return (reward >= 1000);
 	}
 
 	/**
-	 * 
+	 * Prints that the game is over, the number of rounds played and final reward of the player 
 	 */
 	public void displayReport() {
 		System.out.println("game over");
 		System.out.println("rounds of play: " + roundsPlayed);
-		System.out.println("final reward " + reward);
+		System.out.println("final reward: " + reward);
 	}
 
 	/**
-	 * 
+	 * Creates and begins a new game and runs the game until game is over. Prints final results.
 	 */
 	public void playGame() {
 		while (!gameOver()) {
@@ -108,7 +117,7 @@ public class Opoly {
 	}
 
 	/**
-	 * 
+	 * Prints the board according to the position of the player.
 	 */
 	public void drawBoard() {
 		for (int i = 0; i <= boardSize - 1; i++) {
@@ -118,7 +127,7 @@ public class Opoly {
 				System.out.print("o");
 			}
 		}
-		System.out.println(" " + reward + " " + nextNum);
+		System.out.println(" " + reward);
 	}
 
 }
